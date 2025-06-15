@@ -1,2 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
+}
+
+#root {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-background-light);
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
