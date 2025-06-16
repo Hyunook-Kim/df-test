@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
 
 function App() {
   return (
     <AppContainer>
-      <HeaderSection>Header</HeaderSection>
+      <Header />
 
-      <ProfileSection>Profile</ProfileSection>
+      <Profile />
 
       <SubscribeSection>Subscribe with full bleed image</SubscribeSection>
 
@@ -17,22 +19,14 @@ function App() {
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1680px;
+  max-width: 1920px;
   width: 100%;
   flex-grow: 0;
-  padding: 0 0 80px;
+  padding: 0 0 5rem;
   background-color: #fff;
   margin: 0 auto;
   border: 10px solid black;
   min-height: 100vh;
-`;
-
-const HeaderSection = styled.section`
-  background-color: lightblue;
-`;
-
-const ProfileSection = styled.section`
-  background-color: lightgreen;
 `;
 
 const SubscribeSection = styled.section`
