@@ -1,42 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import type { Profile as ProfileType } from "../../models/profile";
+import { getProfiles } from "../../services/profileService";
 
 const Profile: React.FC = () => {
-  // TODO: Replace profileData with data fetched from a service
-  const profileData = [
-    {
-      id: 1,
-      title: "Sed ut perspiciatis",
-      description:
-        "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.",
-      imageUrl: "/images/profiles/profile-1.png",
-      imageSrcSet:
-        "/images/profiles/profile-1-2x.png 2x, /images/profiles/profile-1-3x.png 3x",
-    },
-    {
-      id: 2,
-      title: "ipsum dolor",
-      description:
-        "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.",
-      imageUrl: "/images/profiles/profile-2.png",
-      imageSrcSet:
-        "/images/profiles/profile-2-2x.png 2x, /images/profiles/profile-2-3x.png 3x",
-    },
-    {
-      id: 3,
-      title: "Nemo enim ipsam",
-      description:
-        "Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor.",
-      imageUrl: "/images/profiles/profile-3.png",
-      imageSrcSet:
-        "/images/profiles/profile-3-2x.png 2x, /images/profiles/profile-3-3x.png 3x",
-    },
-  ];
+  const [profiles, setProfiles] = useState<ProfileType[]>([]);
+
+  const fetchProfiles = async (): Promise<void> => {
+    const data = await getProfiles();
+    setProfiles(data.sort(() => Math.random() - 0.5));
+  };
+
+  useEffect(() => {
+    fetchProfiles();
+  }, []);
 
   return (
     <ProfileSection>
       <ProfileContainer>
-        {profileData.map((profile) => (
+        {profiles.map((profile) => (
           <ProfileCard key={profile.id}>
             <ProfileImage
               src={profile.imageUrl}
