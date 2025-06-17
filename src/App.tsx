@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import Header from "./components/Header";
 import Profile from "./components/Profile";
+import Subscribe from "./components/Subscribe";
 
 function App() {
   return (
     <AppContainer>
       <Header />
-
       <Profile />
-
-      <SubscribeSection>Subscribe with full bleed image</SubscribeSection>
-
+      <Subscribe />
       <CardSection>Cards</CardSection>
     </AppContainer>
   );
@@ -27,10 +25,6 @@ const AppContainer = styled.div`
   margin: 0 auto;
   border: 10px solid black;
   min-height: 100vh;
-`;
-
-const SubscribeSection = styled.section`
-  background-color: lightcoral;
 `;
 
 const CardSection = styled.section`
