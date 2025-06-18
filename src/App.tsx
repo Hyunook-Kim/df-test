@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Profile from "./components/Profile";
 import Subscribe from "./components/Subscribe";
+import CardSection from "./components/CardSection";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <Profile />
       <Subscribe />
-      <CardSection>Cards</CardSection>
+      <CardSection />
     </AppContainer>
   );
 }
@@ -25,10 +26,6 @@ const AppContainer = styled.div`
   margin: 0 auto;
   border: 10px solid black;
   min-height: 100vh;
-`;
-
-const CardSection = styled.section`
-  background-color: lightyellow;
 `;
 
 export default App;
