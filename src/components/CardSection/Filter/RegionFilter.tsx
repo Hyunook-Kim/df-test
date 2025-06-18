@@ -35,16 +35,34 @@ const RegionFilter: React.FC<RegionFilterProps> = ({
 
 const Container = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 1.6rem;
+  border: 1px solid var(--border-primary, rgba(0, 0, 0, 0.5));
+  background-color: var(--surface-primary, #fff);
 `;
 
 const FilterButton = styled.button<{ $isActive: boolean }>`
-  color: ${(props) => (props.$isActive ? "white" : "black")};
-  background: ${(props) => (props.$isActive ? "black" : "transparent")};
-  border: 1px solid ${(props) => (props.$isActive ? "black" : "none")};
-  border-radius: 100px;
+  height: 2.5rem;
+  padding: 0 1.3rem;
+  border-radius: 1.6rem;
+  border: none;
   cursor: pointer;
-  padding: 8px 20px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.24px;
+  text-transform: capitalize;
+
+  color: ${(props) =>
+    props.$isActive
+      ? "var(--surface-primary, #fff)"
+      : "var(--text-primary, #000)"};
+  background: ${(props) =>
+    props.$isActive ? "var(--text-primary, #000)" : "transparent"};
+
+  transition: all 0.2s ease-in-out;
 `;
 
 export default RegionFilter;

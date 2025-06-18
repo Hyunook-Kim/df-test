@@ -5,6 +5,7 @@
 }
 
 :root {
+  --background-card: rgba(217, 217, 217, 0.5); /* #d9d9d9 with 50% opacity */
 }
 
 #root {

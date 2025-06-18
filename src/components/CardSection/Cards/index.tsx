@@ -10,12 +10,13 @@ interface CardsProps {
 const Cards: React.FC<CardsProps> = ({ cards }) => {
   return (
     <Container>
-      {cards.map(({ id, title, description, imageUrl }) => (
+      {cards.map((card) => (
         <CardComponent
-          key={id}
-          title={title}
-          description={description}
-          imageUrl={imageUrl}
+          key={card.id}
+          title={card.title}
+          description={card.description}
+          imageUrl={card.imageUrl}
+          imageSrcSet={card.imageSrcSet}
         />
       ))}
     </Container>
@@ -23,10 +24,9 @@ const Cards: React.FC<CardsProps> = ({ cards }) => {
 };
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 `;
 
 export default Cards;

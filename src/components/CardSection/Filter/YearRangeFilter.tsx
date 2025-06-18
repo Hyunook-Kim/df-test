@@ -15,67 +15,79 @@ const YearRangeFilter: React.FC<YearRangeFilterProps> = ({
   onChange,
 }) => {
   const handleStepClick = (year: number) => {
-    if (year === startValue || year === endValue) {
-      onChange(year, year);
-    } else if (year < startValue) {
+    if (year < startValue) {
       onChange(year, endValue);
     } else if (year > endValue) {
       onChange(startValue, year);
     } else {
-      onChange(startValue, year);
+      const startDist = year - startValue;
+      const endDist = endValue - year;
+      if (startDist <= endDist) {
+        onChange(year, endValue);
+      } else {
+        onChange(startValue, year);
+      }
     }
   };
 
-  const getStepPosition = (index: number) => (index / (YEARS.length - 1)) * 100;
-  const startPosition = getStepPosition(YEARS.indexOf(startValue));
-  const endPosition = getStepPosition(YEARS.indexOf(endValue));
+  const getStepPosition = (year: number) =>
+    (YEARS.indexOf(year) / (YEARS.length - 1)) * 100;
+
+  const startPosition = getStepPosition(startValue);
+  const endPosition = getStepPosition(endValue);
 
   return (
     <Container>
-      <Track>
+      <RangeWrapper>
+        <Track />
         <ActiveTrack
           $startPosition={startPosition}
           $endPosition={endPosition}
         />
-      </Track>
-      <StepsContainer>
-        {YEARS.map((year) => {
-          const isActive = year >= startValue && year <= endValue;
-
-          return (
-            <Step
-              key={year}
-              $isActive={isActive}
-              onClick={() => handleStepClick(year)}
-            />
-          );
-        })}
-      </StepsContainer>
-      <YearLabels>
-        {YEARS.map((year) => (
-          <YearLabel
-            key={year}
-            $isActive={year >= startValue && year <= endValue}
-          >
-            {year}
-          </YearLabel>
-        ))}
-      </YearLabels>
+        <StepsContainer>
+          {YEARS.map((year) => {
+            const isActive = year >= startValue && year <= endValue;
+            return (
+              <Step
+                key={year}
+                $isActive={isActive}
+                onClick={() => handleStepClick(year)}
+              >
+                {year}
+              </Step>
+            );
+          })}
+        </StepsContainer>
+      </RangeWrapper>
     </Container>
   );
 };
 
 const Container = styled.div`
+  width: 25.5rem;
+  height: 3.1rem;
+  padding: 0.3rem;
+  border-radius: 1.6rem;
+  border: 1px solid var(--border-primary, rgba(0, 0, 0, 0.5));
+  background-color: var(--surface-primary, #fff);
+  display: flex;
+  align-items: center;
+`;
+
+const RangeWrapper = styled.div`
   position: relative;
-  width: 400px;
-  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const Track = styled.div`
-  position: relative;
-  height: 2px;
-  background: lightgray;
-  border-radius: 1px;
+  position: absolute;
+  width: 100%;
+  height: 0.6rem;
+  background: var(--surface-tertiary, #e0e0e0);
+  border-radius: 0.3rem;
 `;
 
 const ActiveTrack = styled.div<{
@@ -83,44 +95,43 @@ const ActiveTrack = styled.div<{
   $endPosition: number;
 }>`
   position: absolute;
-  top: 50%;
   left: ${(props) => props.$startPosition}%;
   width: ${(props) => props.$endPosition - props.$startPosition}%;
-  height: 2px;
-  background: black;
-  transform: translateY(-50%);
+  height: 0.6rem;
+  background: var(--text-primary, #000);
 `;
 
 const StepsContainer = styled.div`
   position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: -12px;
+  align-items: center;
 `;
 
 const Step = styled.button<{ $isActive: boolean }>`
-  width: 24px;
-  height: 24px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: none;
-  background: ${(props) => (props.$isActive ? "black" : "lightgray")};
-  cursor: pointer;
   padding: 0;
-  transition: all 0.2s ease;
+  cursor: pointer;
 
-  &:hover {
-    background: ${(props) => (props.$isActive ? "black" : "gray")};
-  }
-`;
-
-const YearLabels = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-`;
+  justify-content: center;
+  align-items: center;
 
-const YearLabel = styled.span<{ $isActive: boolean }>`
-  color: ${(props) => (props.$isActive ? "black" : "gray")};
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.21px;
+
+  color: var(--surface-primary, #fff);
+  background: ${(props) =>
+    props.$isActive
+      ? "var(--text-primary, #000)"
+      : "var(--surface-tertiary, #e0e0e0)"};
+
+  transition: all 0.2s ease-in-out;
 `;
 
 export default YearRangeFilter;
