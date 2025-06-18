@@ -65,11 +65,12 @@ const SubscribeForm = styled.form`
 `;
 
 const SubscribeFormTitle = styled.span`
-  text-align: center;
-  font-size: 16px;
+  font-family: var(--font-exo2);
   font-weight: 700;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: -0.24px;
+  text-align: center;
   color: #fff;
 `;
 

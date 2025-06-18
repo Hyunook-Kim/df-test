@@ -70,8 +70,9 @@ const SubscribeTitle = styled.span`
   width: 100%;
   height: 2.3rem;
   margin: 0 0 1.4rem;
-  font-size: 24px;
+  font-family: var(--font-montserrat);
   font-weight: 700;
+  font-size: 24px;
   line-height: 36px;
   letter-spacing: -0.36px;
   text-align: center;
@@ -82,8 +83,9 @@ const SubscribeDescription = styled.span`
   width: 100%;
   height: 5.6rem;
   margin: 1.4rem 0 2rem;
-  font-size: 18px;
+  font-family: var(--font-montserrat);
   font-weight: 400;
+  font-size: 18px;
   line-height: 30px;
   letter-spacing: -0.27px;
   text-align: center;
@@ -101,8 +103,9 @@ const SubscribeSubText = styled.span`
   width: 100%;
   height: 2.7rem;
   margin: 2rem 0 0;
-  font-size: 14px;
+  font-family: var(--font-montserrat);
   font-weight: 400;
+  font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.21px;
   text-align: center;

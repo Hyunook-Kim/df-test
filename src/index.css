@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,8 @@
 
 :root {
   --background-card: rgba(217, 217, 217, 0.5); /* #d9d9d9 with 50% opacity */
+  --font-exo2: "Exo 2", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
 #root {

@@ -75,6 +75,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h3`
+  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: 700;
   line-height: 1;
@@ -86,6 +87,7 @@ const Title = styled.h3`
 `;
 
 const Year = styled.span`
+  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -95,6 +97,7 @@ const Year = styled.span`
 `;
 
 const Description = styled.p`
+  font-family: var(--font-montserrat);
   font-size: 14px;
   font-weight: 400;
   line-height: 1;

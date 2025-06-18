@@ -60,6 +60,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h2`
+  font-family: var(--font-exo2);
   font-size: 48px;
   font-weight: 400;
   line-height: 1.5;

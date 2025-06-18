@@ -18,6 +18,7 @@ const HeaderSection = styled.section`
 const HeaderTextBox = styled.div`
   width: 46.875rem;
   height: 9rem;
+  font-family: var(--font-exo2);
   font-size: 48px;
   font-weight: 400;
   line-height: 72px;

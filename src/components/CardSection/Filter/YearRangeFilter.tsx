@@ -121,6 +121,7 @@ const Step = styled.button<{ $isActive: boolean }>`
   justify-content: center;
   align-items: center;
 
+  font-family: var(--font-exo2);
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.21px;

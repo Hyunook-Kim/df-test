@@ -49,6 +49,7 @@ const FilterButton = styled.button<{ $isActive: boolean }>`
   border: none;
   cursor: pointer;
 
+  font-family: var(--font-exo2);
   font-size: 16px;
   font-weight: 400;
   line-height: 1;

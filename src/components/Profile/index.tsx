@@ -65,8 +65,9 @@ const ProfileImage = styled.img`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 24px;
+  font-family: var(--font-montserrat);
   font-weight: 700;
+  font-size: 24px;
   line-height: 36px;
   letter-spacing: -0.36px;
   margin-bottom: 1rem;
@@ -74,17 +75,19 @@ const CardTitle = styled.h3`
 `;
 
 const CardDescription = styled.p`
-  font-size: 18px;
+  font-family: var(--font-montserrat);
   font-weight: 400;
+  font-size: 18px;
   line-height: 30px;
-  letter-spacing: -0.27px;
+  letter-spacing: -1.5%;
   margin-bottom: 1.5rem;
   color: #000;
 `;
 
 const LearnMoreButton = styled.button`
-  font-size: 18px;
+  font-family: var(--font-exo2);
   font-weight: 700;
+  font-size: 18px;
   line-height: 30px;
   letter-spacing: -0.27px;
   text-transform: uppercase;
