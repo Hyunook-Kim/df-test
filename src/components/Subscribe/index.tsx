@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useImage } from "../../hooks/useImage";
+import EmailForm from "./EmailForm";
 
 export const Subscribe: React.FC = () => {
   const { data: backgroundImage } = useImage();
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Subscribe email:", email);
+  const handleEmailSubmit = (email: string) => {
+    console.log("Newsletter subscription:", email);
   };
 
   return (
@@ -33,20 +32,7 @@ export const Subscribe: React.FC = () => {
           </SubscribeSubText>
         </SubscribeContent>
 
-        <SubscribeForm onSubmit={handleSubmit}>
-          <SubscribeFormTitle>Subscribe to our newsletter</SubscribeFormTitle>
-          <InputWrapper>
-            <EmailInput
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <SubmitButton type="submit">
-              <SubmitIcon src="/images/svg/paper-plane.svg" alt="Submit" />
-            </SubmitButton>
-          </InputWrapper>
-        </SubscribeForm>
+        <EmailForm onSubmit={handleEmailSubmit} />
       </SubscribeOverlay>
     </SubscribeSection>
   );
@@ -121,71 +107,6 @@ const SubscribeSubText = styled.span`
   letter-spacing: -0.21px;
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
-`;
-
-const SubscribeForm = styled.form`
-  width: 31.3rem;
-  height: 5.3rem;
-  margin: 5.9rem 0 0;
-`;
-
-const SubscribeFormTitle = styled.span`
-  text-align: center;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 100%;
-  letter-spacing: -0.24px;
-  color: #fff;
-`;
-
-const InputWrapper = styled.div`
-  width: 31.3rem;
-  height: 3.1rem;
-  margin: 1rem 0 0;
-  padding: 0.3rem 0.6rem 0.3rem 0.3rem;
-  border-radius: 7px;
-  backdrop-filter: blur(10px);
-  border: solid 1px #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-`;
-
-const EmailInput = styled.input`
-  width: 28.1rem;
-  height: 2.6rem;
-  margin: 0 0.5rem 0 0;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  color: #fff;
-  background: transparent;
-  border: none;
-  outline: none;
-
-  &::placeholder {
-    color: #fff;
-  }
-`;
-
-const SubmitButton = styled.button`
-  width: 3.1rem;
-  height: 2.6rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-`;
-
-const SubmitIcon = styled.img`
-  width: 2rem;
-  height: 2rem;
-  margin: 0.3rem 0 0.3rem 0.5rem;
-  object-fit: contain;
 `;
 
 export default Subscribe;
