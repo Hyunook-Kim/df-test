@@ -36,32 +36,73 @@ const Profile: React.FC = () => {
 };
 
 const ProfileSection = styled.section`
-  margin: 2.125rem 5rem 6.875rem;
+  padding: 2.125rem 5rem 6.875rem;
+
+  @media (max-width: 1600px) {
+    padding: 2rem 3rem 5rem;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem 2rem 4rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem 3rem;
+  }
 `;
 
 const ProfileContainer = styled.div`
-  width: 95rem;
-  height: 22rem;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 0;
+
+  @media (max-width: 1600px) {
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    gap: 2rem;
+  }
 `;
 
 const ProfileCard = styled.div`
-  width: 30.8125rem;
-  height: 22rem;
-  flex-grow: 0;
+  flex: 0 1 30%;
+  min-width: 280px;
+  max-width: 500px;
+
+  @media (max-width: 1400px) {
+    flex: 0 1 48%;
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+    max-width: 400px;
+    text-align: center;
+  }
 `;
 
 const ProfileImage = styled.img`
   width: 6.75rem;
   height: 6.75rem;
-  margin: 0 24.0625rem 2.5rem 0;
-  object-fit: contain;
+  margin-bottom: 2.5rem;
+  object-fit: cover;
   border-radius: 50%;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -72,6 +113,17 @@ const CardTitle = styled.h3`
   letter-spacing: -0.36px;
   margin-bottom: 1rem;
   color: #000;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
 `;
 
 const CardDescription = styled.p`
@@ -82,6 +134,18 @@ const CardDescription = styled.p`
   letter-spacing: -1.5%;
   margin-bottom: 1.5rem;
   color: #000;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 1rem;
+  }
 `;
 
 const LearnMoreButton = styled.button`
@@ -92,6 +156,20 @@ const LearnMoreButton = styled.button`
   letter-spacing: -0.27px;
   text-transform: uppercase;
   color: #18a0fb;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
 `;
 
 export default Profile;
