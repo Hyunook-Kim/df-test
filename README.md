@@ -1,54 +1,33 @@
-# React + TypeScript + Vite
+## 실행 방법
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 React로 작성된 웹 애플리케이션입니다. 다음의 단계를 따라 실행할 수 있습니다:
 
-Currently, two official plugins are available:
+1. **의존성 설치**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. **개발 서버 실행**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 기능 명세
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+이 프로젝트는 다음과 같은 주요 기능을 포함하고 있습니다:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **프로필 섹션**: 다양한 프로필 정보를 카드 형태로 표시합니다.
+- **카드 섹션**: 다양한 카드를 필터링하여 표시할 수 있습니다.
+  - **지역 필터**: 선택한 지역에 따라 카드를 필터링합니다.
+  - **연도 범위 필터**: 선택한 연도 범위에 따라 카드를 필터링합니다.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 반응형 디자인
+
+이 프로젝트는 다양한 화면 크기에 대응할 수 있도록 반응형 디자인을 적용하였습니다.
+
+- **프로필 및 카드 섹션**: 화면 크기에 따라 카드의 배치가 자동으로 조정됩니다.
+- **필터 및 타이틀**: 좁은 화면에서는 세로로 배치되어 사용자 경험을 향상시킵니다.
+
+이러한 반응형 디자인을 통해 다양한 디바이스에서 최적의 사용자 경험을 제공합니다.
