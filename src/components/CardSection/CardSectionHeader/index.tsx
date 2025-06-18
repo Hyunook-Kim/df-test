@@ -1,33 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import RegionFilter from "../Filter/RegionFilter";
 import YearRangeFilter from "../Filter/YearRangeFilter";
 
-const regionOptions = [
-  { id: "all", label: "All", value: "all" },
-  { id: "asia", label: "Asia", value: "asia" },
-  { id: "europe", label: "Europe", value: "europe" },
-  { id: "america", label: "America", value: "america" },
-  { id: "oceania", label: "Oceania", value: "oceania" },
-];
+interface CountryOption {
+  id: string;
+  label: string;
+  value: string;
+}
 
-const CardSectionHeader: React.FC = () => {
-  const [region, setRegion] = useState("all");
-  const [yearRange, setYearRange] = useState({ start: 1000, end: 1300 });
+interface CardSectionHeaderProps {
+  countryOptions: CountryOption[];
+  selectedCountry: string;
+  onCountryChange: (country: string) => void;
+  selectedYearRange: { start: number; end: number };
+  onYearRangeChange: (start: number, end: number) => void;
+}
 
+const CardSectionHeader: React.FC<CardSectionHeaderProps> = ({
+  countryOptions,
+  selectedCountry,
+  onCountryChange,
+  selectedYearRange,
+  onYearRangeChange,
+}) => {
   return (
     <Container>
       <Title>Duis tincidunt ut ligula vitae mollis.</Title>
       <FilterContainer>
         <RegionFilter
-          options={regionOptions}
-          value={region}
-          onChange={setRegion}
+          options={countryOptions}
+          value={selectedCountry}
+          onChange={onCountryChange}
         />
         <YearRangeFilter
-          startValue={yearRange.start}
-          endValue={yearRange.end}
-          onChange={(start, end) => setYearRange({ start, end })}
+          startValue={selectedYearRange.start}
+          endValue={selectedYearRange.end}
+          onChange={onYearRangeChange}
         />
       </FilterContainer>
     </Container>

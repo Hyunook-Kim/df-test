@@ -33,7 +33,10 @@ const YearRangeFilter: React.FC<YearRangeFilterProps> = ({
   return (
     <Container>
       <Track>
-        <ActiveTrack startPosition={startPosition} endPosition={endPosition} />
+        <ActiveTrack
+          $startPosition={startPosition}
+          $endPosition={endPosition}
+        />
       </Track>
       <StepsContainer>
         {YEARS.map((year) => {
@@ -42,7 +45,7 @@ const YearRangeFilter: React.FC<YearRangeFilterProps> = ({
           return (
             <Step
               key={year}
-              isActive={isActive}
+              $isActive={isActive}
               onClick={() => handleStepClick(year)}
             />
           );
@@ -52,7 +55,7 @@ const YearRangeFilter: React.FC<YearRangeFilterProps> = ({
         {YEARS.map((year) => (
           <YearLabel
             key={year}
-            isActive={year >= startValue && year <= endValue}
+            $isActive={year >= startValue && year <= endValue}
           >
             {year}
           </YearLabel>
@@ -75,11 +78,14 @@ const Track = styled.div`
   border-radius: 1px;
 `;
 
-const ActiveTrack = styled.div<{ startPosition: number; endPosition: number }>`
+const ActiveTrack = styled.div<{
+  $startPosition: number;
+  $endPosition: number;
+}>`
   position: absolute;
   top: 50%;
-  left: ${(props) => props.startPosition}%;
-  width: ${(props) => props.endPosition - props.startPosition}%;
+  left: ${(props) => props.$startPosition}%;
+  width: ${(props) => props.$endPosition - props.$startPosition}%;
   height: 2px;
   background: black;
   transform: translateY(-50%);
@@ -92,18 +98,18 @@ const StepsContainer = styled.div`
   margin-top: -12px;
 `;
 
-const Step = styled.button<{ isActive: boolean }>`
+const Step = styled.button<{ $isActive: boolean }>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
   border: none;
-  background: ${(props) => (props.isActive ? "black" : "lightgray")};
+  background: ${(props) => (props.$isActive ? "black" : "lightgray")};
   cursor: pointer;
   padding: 0;
   transition: all 0.2s ease;
 
   &:hover {
-    background: ${(props) => (props.isActive ? "black" : "gray")};
+    background: ${(props) => (props.$isActive ? "black" : "gray")};
   }
 `;
 
@@ -113,8 +119,8 @@ const YearLabels = styled.div`
   margin-top: 8px;
 `;
 
-const YearLabel = styled.span<{ isActive: boolean }>`
-  color: ${(props) => (props.isActive ? "black" : "gray")};
+const YearLabel = styled.span<{ $isActive: boolean }>`
+  color: ${(props) => (props.$isActive ? "black" : "gray")};
 `;
 
 export default YearRangeFilter;

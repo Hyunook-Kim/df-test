@@ -23,7 +23,7 @@ const RegionFilter: React.FC<RegionFilterProps> = ({
       {options.map((option) => (
         <FilterButton
           key={option.id}
-          isActive={value === option.value}
+          $isActive={value === option.value}
           onClick={() => onChange(option.value)}
         >
           {option.label}
@@ -38,10 +38,10 @@ const Container = styled.div`
   gap: 12px;
 `;
 
-const FilterButton = styled.button<{ isActive: boolean }>`
-  color: ${(props) => (props.isActive ? "white" : "black")};
-  background: ${(props) => (props.isActive ? "black" : "transparent")};
-  border: 1px solid ${(props) => (props.isActive ? "black" : "none")};
+const FilterButton = styled.button<{ $isActive: boolean }>`
+  color: ${(props) => (props.$isActive ? "white" : "black")};
+  background: ${(props) => (props.$isActive ? "black" : "transparent")};
+  border: 1px solid ${(props) => (props.$isActive ? "black" : "none")};
   border-radius: 100px;
   cursor: pointer;
   padding: 8px 20px;

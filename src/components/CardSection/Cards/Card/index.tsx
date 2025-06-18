@@ -2,32 +2,27 @@ import React from "react";
 import styled from "styled-components";
 
 interface CardProps {
-  title: string;
+  title: {
+    country: string;
+    name: string;
+    year: number;
+  };
   description: string;
   imageUrl: string;
-  year: number;
-  region: string;
 }
 
-const Card: React.FC<CardProps> = ({
-  title,
-  description,
-  imageUrl,
-  year,
-  region,
-}) => {
+const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
   return (
     <Container>
+      <Header>
+        <Title>{`${title.country}, ${title.name}`}</Title>
+        <Year>{title.year}</Year>
+      </Header>
       <ImageContainer>
-        <Image src={imageUrl} alt={title} />
+        <Image src={imageUrl || undefined} alt={title.name} />
       </ImageContainer>
       <Content>
-        <Title>{title}</Title>
         <Description>{description}</Description>
-        <MetaInfo>
-          <Year>{year}</Year>
-          <Region>{region}</Region>
-        </MetaInfo>
       </Content>
     </Container>
   );
@@ -39,6 +34,13 @@ const Container = styled.div`
   overflow: hidden;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
 `;
 
 const ImageContainer = styled.div`
@@ -54,32 +56,26 @@ const Image = styled.img`
 `;
 
 const Content = styled.div`
-  padding: 20px;
+  padding: 16px;
 `;
 
 const Title = styled.h3`
-  margin: 0 0 8px;
-  color: black;
-`;
-
-const Description = styled.p`
-  margin: 0 0 16px;
-  color: gray;
-  line-height: 1.5;
-`;
-
-const MetaInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Year = styled.span`
-  color: gray;
+  font-size: 14px;
+  padding-left: 8px;
 `;
 
-const Region = styled.span`
-  color: gray;
+const Description = styled.p`
+  font-size: 14px;
+  margin: 0;
 `;
 
 export default Card;
