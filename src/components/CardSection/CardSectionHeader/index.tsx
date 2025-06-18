@@ -57,6 +57,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  /* @media (max-width: 560px) { */
+  @media (max-width: 1017px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const Title = styled.h2`
@@ -73,6 +79,13 @@ const FilterContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1.3rem;
+
+  /* @media (max-width: 560px) { */
+  @media (max-width: 1017px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export default CardSectionHeader;

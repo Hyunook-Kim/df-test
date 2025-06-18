@@ -27,6 +27,11 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
+
+  /* @media (max-width: 560px) { */
+  @media (max-width: 1017px) {
+    justify-content: center;
+  }
 `;
 
 export default Cards;
